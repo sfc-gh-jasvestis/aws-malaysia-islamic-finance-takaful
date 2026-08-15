@@ -9,7 +9,6 @@ Malaysia's Takaful industry manages RM 35 billion in contributions across 15 lic
 ```mermaid
 flowchart LR
     S3[S3 Data Landing] --> SP[Snowpipe]
-    SP --> RAW[RAW Tables]
     RAW --> DT[Dynamic Tables]
     DT --> ML[ML Functions]
     DT --> SEARCH[Cortex Search]
