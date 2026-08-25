@@ -112,7 +112,7 @@ Run all scripts including AWS integration. Deploy QuickSight dashboard from `qui
 ## Business Impact
 
 Industry research and Snowflake customer outcomes:
-- **Malaysia's Takaful industry collected RM 35.2B in contributions in 2023, growing 8.4% YoY** — [Bank Negara Malaysia](https://www.bnm.gov.my/insurance-and-takaful)
+- **Malaysia's Takaful industry collected RM 35.2B in contributions in 2023, growing 8.4% YoY** — [Bank Negara Malaysia](https://www.bnm.gov.my/financial-stability)
 - **Insurance fraud costs the industry 5-10% of total claims — AI detection reduces losses by 40-60%** — [Coalition Against Insurance Fraud](https://insurancefraud.org/)
 - **AI-powered claims processing reduces average handling time by 50-70%** — [McKinsey Insurance](https://www.mckinsey.com/industries/financial-services/our-insights/insurance)
 - **Malaysia targets 75% Takaful penetration rate under IFSA 2013 — efficient processing is critical** — [MIFC](https://www.mifc.com/)
