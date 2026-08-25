@@ -116,7 +116,7 @@ Industry research and Snowflake customer outcomes:
 - **Insurance fraud costs the industry 5-10% of total claims — AI detection reduces losses by 40-60%** — [Coalition Against Insurance Fraud](https://insurancefraud.org/)
 - **AI-powered claims processing reduces average handling time by 50-70%** — [McKinsey Insurance](https://www.mckinsey.com/industries/financial-services/our-insights/insurance)
 - **Malaysia targets 75% Takaful penetration rate under IFSA 2013 — efficient processing is critical** — [MIFC](https://www.mifc.com/)
-
+- **Western Union** (Snowflake customer): processes 1B+ cross-border transactions on Snowflake with real-time compliance monitoring across 200+ countries -- [snowflake.com/customers/western-union](https://www.snowflake.com/en/customers/all-customers/case-study/western-union/)
 
 ## Key Demo Numbers
 
