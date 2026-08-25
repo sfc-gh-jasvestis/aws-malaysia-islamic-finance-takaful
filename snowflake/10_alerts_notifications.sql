@@ -8,7 +8,7 @@ USE SCHEMA APP;
 CREATE OR REPLACE NOTIFICATION INTEGRATION aws_malaysia_islamic_finance_takaful_EMAIL_INT
   TYPE = EMAIL
   ENABLED = TRUE
-  ALLOWED_RECIPIENTS = ('jonathan.asvestis@snowflake.com');
+  ALLOWED_RECIPIENTS = ('<YOUR_EMAIL>');
 
 -- Alert: HIGH_FRAUD_CLAIM_ALERT
 CREATE OR REPLACE ALERT APP.HIGH_FRAUD_CLAIM_ALERT
@@ -22,7 +22,7 @@ IF (EXISTS (
 THEN
   CALL SYSTEM$SEND_EMAIL(
     'aws_malaysia_islamic_finance_takaful_EMAIL_INT',
-    'jonathan.asvestis@snowflake.com',
+    '<YOUR_EMAIL>',
     '[ALERT] Takaful Claims Intelligence: High-probability fraud claim requires immediate investigation',
     'High-probability fraud claim requires immediate investigation'
   );
@@ -41,7 +41,7 @@ IF (EXISTS (
 THEN
   CALL SYSTEM$SEND_EMAIL(
     'aws_malaysia_islamic_finance_takaful_EMAIL_INT',
-    'jonathan.asvestis@snowflake.com',
+    '<YOUR_EMAIL>',
     '[ALERT] Takaful Claims Intelligence: Provider claims pattern anomaly detected',
     'Provider claims pattern anomaly detected'
   );
