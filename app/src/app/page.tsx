@@ -89,7 +89,7 @@ export default function HomePage() {
 
   const askAiTab = (
     <div className="h-[600px]">
-      <AskAI title="Ask AI" sampleQuestions={['Which takaful lines have rising claims?', 'Show persistency by channel', 'What is surplus distribution forecast?']} onSubmit={async (question, mode) => ({ answer: `[Demo Mode] Response to: "${question}" (${mode} mode). Connect to Snowflake for live data.`, sql: mode === 'sql' ? 'SELECT * FROM CURATED.SUMMARY LIMIT 10;' : undefined })} />
+      <AskAI title="Ask AI" mode="both" sampleQuestions={['Which takaful lines have rising claims?', 'Show persistency by channel', 'What is surplus distribution forecast?']} onSubmit={async (question, mode) => ({ answer: `[Demo Mode] Response to: "${question}" (${mode} mode). Connect to Snowflake for live data.`, sql: mode === 'sql' ? 'SELECT * FROM CURATED.SUMMARY LIMIT 10;' : undefined })} />
     </div>
   );
 
