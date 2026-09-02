@@ -1,16 +1,13 @@
--- ============================================================================
--- Takaful Claims Intelligence
--- AI-powered claims processing for Malaysia's Takaful operators — AI_PARSE_DOCUMENT digitizes claim forms, ML.CLASSIFICATION scores fraud risk, and Cortex Complete generates investigation summaries.
--- ============================================================================
-USE ROLE ACCOUNTADMIN;
-CREATE DATABASE IF NOT EXISTS ISLAMIC_TAKAFUL_CLAIMS;
-CREATE WAREHOUSE IF NOT EXISTS TAKAFUL_WH WAREHOUSE_SIZE = 'MEDIUM' AUTO_SUSPEND = 120 AUTO_RESUME = TRUE;
-USE DATABASE ISLAMIC_TAKAFUL_CLAIMS;
-CREATE SCHEMA IF NOT EXISTS RAW;
-CREATE SCHEMA IF NOT EXISTS CURATED;
-CREATE SCHEMA IF NOT EXISTS ML;
-CREATE SCHEMA IF NOT EXISTS AI;
-CREATE SCHEMA IF NOT EXISTS SEARCH;
-CREATE SCHEMA IF NOT EXISTS APP;
+-- Generated from generator/demo_specs/aws-malaysia-islamic-finance-takaful.json
+-- Regenerate with: python3 generator/gen_repo_docs.py aws-malaysia-islamic-finance-takaful
+-- This is the schema that is actually deployed for MY_ISLAMIC_FINANCE_TAKAFUL.
 
-USE WAREHOUSE TAKAFUL_WH;
+-- MY_ISLAMIC_FINANCE_TAKAFUL  (Takaful Claims Intelligence)
+-- generated from generator/demo_specs/aws-malaysia-islamic-finance-takaful.json - do not hand-edit
+CREATE DATABASE IF NOT EXISTS MY_ISLAMIC_FINANCE_TAKAFUL;
+CREATE SCHEMA IF NOT EXISTS MY_ISLAMIC_FINANCE_TAKAFUL.RAW;
+CREATE SCHEMA IF NOT EXISTS MY_ISLAMIC_FINANCE_TAKAFUL.CURATED;
+CREATE SCHEMA IF NOT EXISTS MY_ISLAMIC_FINANCE_TAKAFUL.APP;
+USE DATABASE MY_ISLAMIC_FINANCE_TAKAFUL;
+
+-- 5 real regions; entity names carry their region so the two always agree
