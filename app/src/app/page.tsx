@@ -32,15 +32,22 @@ export default function HomePage() {
       .catch(() => {});
   }, []);
 
+
+  // KPI values come from /api/data, which reads CURATED.KPI_SUMMARY. The literal
+  // stays as a fallback so the card still renders if the API is unavailable.
+  const kpiVal = (title: string, fallback: string): string =>
+    (data?.kpiCards as { title: string; value: string }[] | undefined)
+      ?.find((k) => k.title === title)?.value ?? fallback;
+
   const title = narrative?.title || 'SEA AWS Demo';
 
   const executiveCockpit = (
     <div className="space-y-6">
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        <KPICard title="Gross Contributions" value="RM 12.4B" status="neutral" />
-        <KPICard title="Claims Ratio" value="58%" status="neutral" />
-        <KPICard title="Surplus Distributed" value="RM 2.4B" status="neutral" />
-        <KPICard title="Policies Active" value="8.4M" status="neutral" />
+        <KPICard title="Gross Contributions" value={kpiVal('Gross Contributions', 'RM 12.4B')} status="neutral" />
+        <KPICard title="Claims Ratio" value={kpiVal('Claims Ratio', '58%')} status="neutral" />
+        <KPICard title="Surplus Distributed" value={kpiVal('Surplus Distributed', 'RM 2.4B')} status="neutral" />
+        <KPICard title="Policies Active" value={kpiVal('Policies Active', '8.4M')} status="neutral" />
       </div>
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
         <div className="lg:col-span-1">
@@ -71,9 +78,9 @@ export default function HomePage() {
   const domainTab1 = (
     <div className="space-y-6">
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-        <KPICard title="Solvency Ratio" value="247%" />
-        <KPICard title="Reserve Adequacy" value="118%" />
-        <KPICard title="Persistency" value="87%" />
+        <KPICard title="Solvency Ratio" value={kpiVal('Solvency Ratio', '247%')} />
+        <KPICard title="Reserve Adequacy" value={kpiVal('Reserve Adequacy', '118%')} />
+        <KPICard title="Persistency" value={kpiVal('Persistency', '87%')} />
       </div>
       <Chart data={data?.detail || [{ x: 'Mon', y: 24 }, { x: 'Tue', y: 28 }, { x: 'Wed', y: 22 }, { x: 'Thu', y: 31 }, { x: 'Fri', y: 26 }, { x: 'Sat', y: 19 }, { x: 'Sun', y: 23 }]} type="area" xKey="x" yKeys={[{ key: 'y', name: 'Ratio %' }]} title="Loss Ratio Trend by Line" height={400} />
     </div>
