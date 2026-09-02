@@ -1,109 +1,81 @@
-# Demo Script: Takaful Claims Intelligence
-## ~4-Minute Recorded Walkthrough
-**Format**: Screen recording with voiceover
-**Target**: Customer meeting / booth loop / social share
-**Narrative**: "Snowflake transforms Takaful claims processing — AI parses 15,000 claim documents, ML scores fraud risk, anomaly detection catches patterns, and Cortex Complete generates investigation summaries for adjusters"
-**Demo Mode**: Open app with `?demo=true` for presenter notes
+# Takaful Claims Intelligence
 
----
+**Malaysia - Islamic Finance**
+Use case: Takaful Claims Processing
 
-## Two Personas
+> AI-powered claims processing for Malaysia's Takaful operators — AI_PARSE_DOCUMENT digitizes claim forms, ML.CLASSIFICATION scores fraud risk, and Cortex Complete generates investigation summaries.
 
-| Persona | Role | Tool | What they care about |
-|---|---|---|---|
-| **Dato' Hj. Ibrahim** | CEO Takaful Division | React App (SPCS) | Claims leakage, fraud losses, processing efficiency, participant satisfaction, combined ratio |
-| **Zainab binti Yusof** | Claims Manager | Amazon QuickSight | Claim validation, fraud indicators, investigation queue, provider network integrity, document completeness |
+## Why Snowflake
 
----
+Snowflake transforms Takaful claims processing — AI parses 15,000 claim documents, ML scores fraud risk, anomaly detection catches patterns, and Cortex Complete generates investigation summaries for adjusters
 
-## What's Built
+- **AI_PARSE_DOCUMENT on Takaful claim forms** - Only demo parsing Islamic insurance claim documents with Malaysian medical terminology
+- **ML.CLASSIFICATION for fraud scoring** - Scores fraud probability on Takaful claims using Shariah-specific claim structures
+- **ML.ANOMALY_DETECTION on provider patterns** - Detects syndicated fraud across provider networks in real time
+- **Investigation note search with Cortex Search** - 3,000 investigation notes searchable for precedent and pattern matching
+- **Cortex Complete for investigation summaries** - Generates human-readable investigation reports from parsed documents and ML scores
+- **Malaysian Takaful context** - RM 35B industry with authentic Malaysian panel hospital names and Takaful terminology
 
-| Layer | Component | Detail |
+## What is deployed
+
+| | |
+|---|---|
+| Database | `MY_ISLAMIC_FINANCE_TAKAFUL` |
+| Service | `MY_ISLAMIC_FINANCE_TAKAFUL_APP` |
+| Compute pool | `SEA_DEMOS_MALAYSIA_POOL` |
+| Dimension table | `RAW.PROVIDER_NETWORK` (20 rows) |
+| Fact table | `RAW.POLICYHOLDERS` (250,000 rows, 90 days) |
+| Curated layer | `CURATED.PERFORMANCE_SUMMARY`, `CURATED.TREND_ANALYSIS`, `CURATED.KPI_SUMMARY` |
+| Currency | MYR (RM) |
+
+Regions in play: Selangor, Johor, Penang, Sabah, Sarawak
+Segments: Motor Claim, Medical Claim, Family Takaful, Property Claim
+
+Dynamic tables are created suspended and refreshed on demand:
+
+```bash
+./refresh_demo_data.sh MY_ISLAMIC_FINANCE_TAKAFUL
+```
+
+## KPI cards
+
+Every card below is served live from `CURATED.KPI_SUMMARY`. The app keeps the
+original literal as a fallback, so it still renders if Snowflake is unreachable.
+
+| Card | Value | Backed by |
 |---|---|---|
-| **RAW** | 5 tables | CLAIMS (15000), POLICYHOLDERS (50000), INVESTIGATION_NOTES (3000), CLAIM_DOCUMENTS (8000), PROVIDER_NETWORK (500) |
-| **CURATED** | 4 Dynamic Tables | CLAIMS_DASHBOARD, FRAUD_SCORING, PROVIDER_ANALYTICS, INVESTIGATION_QUEUE |
-| **ML** | ML.CLASSIFICATION + ML.ANOMALY_DETECTION | Forecasting + anomaly detection |
-| **AI** | AI_PARSE_DOCUMENT, AI_EXTRACT, AI_CLASSIFY | Classification + extraction |
-| **Search** | Cortex Search | 3000 documents indexed |
-| **Agent** | TAKAFUL_CLAIMS_AGENT | Semantic View + Search tools |
+| Gross Contributions | `RM 12.4B` | total across Provider Network |
+| Claims Ratio | `58%` | average per event |
+| Surplus Distributed | `RM 2.4B` | total across Provider Network |
+| Policies Active | `8.4M` | total across Provider Network |
+| Solvency Ratio | `247%` | average per event |
+| Reserve Adequacy | `118%` | average per event |
+| Persistency | `87%` | average per event |
 
 
----
+## Demo flow
 
-## The Story
+1. Claims Overview
+2. Fraud Detection
+3. Pattern Analytics
+4. Ask AI
+5. Architecture & Data
 
-Malaysia's Takaful industry manages RM 35 billion in contributions across 15 licensed operators. A leading family Takaful operator processes 15,000 claims per quarter, but manual review catches only 0.8% of fraudulent claims. When AI_PARSE_DOCUMENT digitizes every claim form and ML.CLASSIFICATION scores fraud risk, the detection rate jumps to 1.9% — catching an additional RM 12.4M in suspicious claims that would have been paid without investigation.
+## Talking points
 
----
+- **15,000 claims** - processed this quarter across family and general Takaful
+- **284 fraudulent (1.9%)** - claims flagged by ML.CLASSIFICATION
+- **RM 47M** - total claims value under investigation
+- **72 hours** - average claim processing time (down from 14 days)
+- **4 providers** - flagged anomalous by ML.ANOMALY_DETECTION
 
-## Script
+## Business impact
 
-### [0:00–0:45] CLAIMS OVERVIEW
-
-**Show**: Claims Overview tab
-
-> "Fifteen thousand claims processed this quarter — RM 47 million currently under investigation."
-
-**Action**: Point at 15,000 claims KPI
-
-### [0:45–1:30] FRAUD DETECTION
-
-**Show**: Fraud Detection tab
-
-> "ML.CLASSIFICATION scores every claim — top 284 flagged for investigation."
-
-**Action**: Show fraud score distribution chart
-
-### [1:30–2:15] PATTERN ANALYTICS
-
-**Show**: Pattern Analytics tab
-
-> "ML.ANOMALY_DETECTION flags 4 providers with claims volume 3x above normal."
-
-**Action**: Show provider anomaly heatmap
-
-### [2:15–3:00] ASK AI
-
-**Show**: Ask AI tab
-
-> "Dato' Hj. Ibrahim asks: 'What is the total value of claims flagged as fraudulent this quarter?'"
-
-**Action**: Type fraud value question
-
-### [3:00–3:45] ARCHITECTURE & DATA
-
-**Show**: Architecture & Data tab
-
-> "Seven Snowflake capabilities, five AWS services in the dual-build."
-
-**Action**: Walk through architecture diagram
-
+- Malaysia's Takaful industry collected RM 35.2B in contributions in 2023, growing 8.4% YoY (Bank Negara Malaysia)
+- Insurance fraud costs the industry 5-10% of total claims — AI detection reduces losses by 40-60% (Coalition Against Insurance Fraud)
+- AI-powered claims processing reduces average handling time by 50-70% (McKinsey Insurance)
+- Malaysia targets 75% Takaful penetration rate under IFSA 2013 — efficient processing is critical (MIFC)
 
 ---
-
-## Key Demo Differentiators
-
-1. **AI_PARSE_DOCUMENT on Takaful claim forms** — Only demo parsing Islamic insurance claim documents with Malaysian medical terminology
-2. **ML.CLASSIFICATION for fraud scoring** — Scores fraud probability on Takaful claims using Shariah-specific claim structures
-3. **ML.ANOMALY_DETECTION on provider patterns** — Detects syndicated fraud across provider networks in real time
-4. **Investigation note search with Cortex Search** — 3,000 investigation notes searchable for precedent and pattern matching
-5. **Cortex Complete for investigation summaries** — Generates human-readable investigation reports from parsed documents and ML scores
-6. **Malaysian Takaful context** — RM 35B industry with authentic Malaysian panel hospital names and Takaful terminology
-
-
----
-
-## Demo Prep Checklist
-
-### Data Verification
-- [ ] `SELECT COUNT(*) FROM ISLAMIC_TAKAFUL_CLAIMS.RAW.CLAIMS` → 15000
-- [ ] `SELECT COUNT(*) FROM ISLAMIC_TAKAFUL_CLAIMS.RAW.POLICYHOLDERS` → 50000
-- [ ] `SELECT COUNT(*) FROM ISLAMIC_TAKAFUL_CLAIMS.RAW.CLAIM_DOCUMENTS` → 8000
-
-### ML Model Verification
-- [ ] `SELECT COUNT(*) FROM ISLAMIC_TAKAFUL_CLAIMS.ML.FRAUD_SCORING_RESULTS WHERE FRAUD_PROBABILITY > 0.7` → >=284
-- [ ] `SELECT COUNT(*) FROM ISLAMIC_TAKAFUL_CLAIMS.ML.CLAIMS_PATTERN_ANOMALY_RESULTS WHERE IS_ANOMALY = TRUE` → >=4
-
-### AI/Agent Verification
-- [ ] `SELECT COUNT(*) FROM ISLAMIC_TAKAFUL_CLAIMS.AI.CLAIM_PARSE_RESULTS` → 8000
-
+Generated from `generator/demo_specs/aws-malaysia-islamic-finance-takaful.json`. Do not hand-edit: run
+`python3 generator/gen_repo_docs.py aws-malaysia-islamic-finance-takaful` instead.
