@@ -53,6 +53,7 @@ export default function HomePage() {
         <div className="lg:col-span-1">
           <GeoMap
             country="malaysia"
+            labels={{ entity: 'Products', event: 'Policyholders', alert: 'Claims' }}
             regions={data?.regions}
             markers={[{"label": "Kuala Lumpur", "value": "Islamic finance hub", "color": "blue", "size": "lg"}, {"label": "Penang", "value": "Regional branch", "color": "green", "size": "md"}, {"label": "Johor Bahru", "value": "Southern ops", "color": "green", "size": "md"}, {"label": "Kota Kinabalu", "value": "E.Malaysia branch", "color": "green", "size": "sm"}]}
             routes={[]}
@@ -70,9 +71,14 @@ export default function HomePage() {
       <DataTable columns={[
           { key: 'id', header: '#' },
           { key: 'name', header: 'Product' },
+          { key: 'region', header: 'Region' },
           { key: 'status', header: 'Claims Ratio' },
-          { key: 'value', header: 'Contributions (RM M)' },
-      ]} data={data?.entities || []} title="Product Line Performance" />
+          { key: 'm1', header: 'Contributions (RM M)' },
+          { key: 'm2', header: 'Persistency' },
+          { key: 'm3', header: 'Solvency Ratio' },
+          { key: 'events', header: 'Policyholders' },
+          { key: 'alerts', header: 'Claims' },
+        ]} data={data?.entities || []} title="Product Line Performance" />
     </div>
   );
 
